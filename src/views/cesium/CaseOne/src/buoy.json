@@ -1,0 +1,275 @@
+{
+  "type":"FeatureCollection", 
+  "features": [
+    {
+      "type" : "Feature",
+      "id" : 0,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          122.98508694162084,
+          31.579994462273984
+        ]
+      },
+      "properties" : {
+        "FID" : 0,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-101",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 1,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          122.42550555746912,
+          31.975091124829271
+        ]
+      },
+      "properties" : {
+        "FID" : 1,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-102",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 2,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          124.77658727892144,
+          31.872413326841983
+        ]
+      },
+      "properties" : {
+        "FID" : 2,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-103",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 3,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          122.77658727892144,
+          29.872413326841983
+        ]
+      },
+      "properties" : {
+        "FID" : 3,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-104",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 4,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          124.77658727892144,
+          31.872413326841983    
+        ]
+      },
+      "properties" : {
+        "FID" : 4,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-105",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 5,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          122.77658727892144,
+          30.872413326841983    
+        ]
+      },
+      "properties" : {
+        "FID" : 5,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-106",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 6,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          123.77658727892144,
+          30.872413326841983    
+        ]
+      },
+      "properties" : {
+        "FID" : 6,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-107",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 7,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          124.07658727892144,
+          31.072413326841983    
+        ]
+      },
+      "properties" : {
+        "FID" : 7,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-108",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 8,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          124.07658727892144,
+          30.372413326841983    
+        ]
+      },
+      "properties" : {
+        "FID" : 8,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-109",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 9,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          123.37658727892144,
+          30.372413326841983    
+        ]
+      },
+      "properties" : {
+        "FID" : 9,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-110",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 10,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          123.37658727892144,
+          32.372413326841983    
+        ]
+      },
+      "properties" : {
+        "FID" : 10,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-111",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 11,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          122.67658727892144,
+          29.072413326841983    
+        ]
+      },
+      "properties" : {
+        "FID" : 11,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-112",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 12,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          123.17658727892144,
+          28.572413326841983    
+        ]
+      },
+      "properties" : {
+        "FID" : 12,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-113",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 13,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          124.57658727892144,
+          29.372413326841983    
+        ]
+      },
+      "properties" : {
+        "FID" : 13,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-114",
+        "equiptype" : "buoy"
+      }
+    },
+    {
+      "type" : "Feature",
+      "id" : 39,
+      "geometry" : {
+        "type" : "Point",
+        "coordinates" : [
+          123.56073379843085,
+          29.155692602016301
+        ]
+      },
+      "properties" : {
+        "FID" : 39,
+        "Id" : 0,
+        "area" : "wx",
+        "type" : "浮标-315",
+        "equiptype" : "buoy"
+      }
+    }
+  ]
+}

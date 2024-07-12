@@ -1,0 +1,120 @@
+<template>
+  <!-- 创建一个div容器，用于渲染Three.js的场景 -->
+  <div id="container" />
+</template>
+
+<script>
+import * as THREE from 'three'
+import WebGL from 'three/examples/jsm/capabilities/WebGL.js'
+// 轨道控制器
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import gsap from 'gsap'
+
+export default {
+  name: 'Threejs',
+  data() {
+    return {
+      camera: null, // 相机对象
+      scene: null, // 场景对象
+      renderer: null, // 渲染器对象
+      mesh: null, // 网格模型对象Mesh
+      controls: null, // 轨道控制器,
+      mesh2: null
+    }
+  },
+  mounted() {
+    // 组件挂载后初始化场景
+    this.init()
+  },
+  methods: {
+    init() {
+      const container = document.getElementById('container')
+      // 创建一个场景对象
+      this.scene = new THREE.Scene()
+
+      // 创建一个透视相机
+      /**
+         * PerspectiveCamera:
+         * 参数一：视野角度，单位是角度。
+         * 参数二：长宽比。
+         * 参数三：近截面和远截面，只有在这些截面之间的物体才会被渲染。
+         */
+      this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 700)
+
+      // 创建渲染器，加上抗锯齿
+      this.renderer = new THREE.WebGLRenderer({ antialias: true })
+      // 设置渲染器的宽高
+      this.renderer.setSize(window.innerWidth, window.innerHeight)
+      // 设置设备像素比，以支持高分辨率显示设备
+      this.renderer.setPixelRatio(window.devicePixelRatio)
+      // 将渲染器的DOM元素（canvas）添加到容器中
+      container.appendChild(this.renderer.domElement)
+
+      // 创建一个立方体几何体
+      const geometry = new THREE.BoxGeometry(1, 1, 1)
+      // 创建一个基本材质，并设置颜色为绿色
+      const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+      // 创建一个网格（几何体 + 材质）
+      this.mesh = new THREE.Mesh(geometry, material)
+      // 将网格添加到场景中
+      this.scene.add(this.mesh)
+
+      // 设置相机的位置
+      this.camera.position.set(3, 2, 5)
+      // 设置相机看向原点
+      this.camera.lookAt(0, 0, 0)
+
+      // 添加一个坐标轴辅助器
+      const axesHelper = new THREE.AxesHelper(3)
+      this.scene.add(axesHelper)
+
+      // 添加轨道控制器
+      this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+      // 启用阻尼效果
+      this.controls.enableDamping = true
+      // 设置阻尼系数
+      this.controls.dampingFactor = 0.05
+      // 启用自动旋转
+      this.controls.autoRotate = false
+
+      // 检查WebGL兼容性
+      if (WebGL.isWebGLAvailable()) {
+        this.animate()
+      } else {
+        const warning = WebGL.getWebGLErrorMessage()
+        container.appendChild(warning)
+      }
+      const material2 = new THREE.MeshBasicMaterial({ color: 'red' })
+      this.mesh2 = new THREE.Mesh(geometry, material2)
+
+      this.mesh.position.set(0, 0, 0)
+      this.mesh2.position.set(3, 0, 3)
+
+      this.scene.add(this.mesh2)
+
+      gsap.to(this.mesh.position, { duration: 1, delay: 1, x: 3 })
+      gsap.to(this.mesh2.position, { duration: 1, delay: 3, x: 0 })
+    },
+    animate() {
+      // 递归调用自身以实现动画效果
+      requestAnimationFrame(this.animate.bind(this))
+      // 旋转立方体
+      // this.mesh.rotation.x += 0.01
+      // this.mesh.rotation.y += 0.01
+      // 渲染场景和相机
+      this.renderer.render(this.scene, this.camera)
+      // 更新控制器
+      this.controls.update()
+    }
+  }
+}
+</script>
+
+<style>
+/* 设置容器的宽高，使其占满整个视口 */
+#container {
+  width: 100%;
+  height: 100vh;
+  display: block;
+}
+</style>

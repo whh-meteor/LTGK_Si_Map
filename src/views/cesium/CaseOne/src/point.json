@@ -1,0 +1,419 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.2308656471922,
+          30.613162500922563
+        ]
+      },
+      "properties": {
+        "FID": 1,
+        "Id": 0,
+        "area": "wx",
+        "type": "浮标-103",
+        "equiptype": "buoy"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.816,
+          31.449
+        ]
+      },
+      "properties": {
+        "FID": 4,
+        "Id": 0,
+        "area": "wx",
+        "type": "浮标-108",
+        "equiptype": "buoy"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 66,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.596,
+          30.315
+        ]
+      },
+      "properties": {
+        "FID": 66,
+        "Id": 0,
+        "area": "wx",
+        "type": "浮标-H3",
+        "equiptype": "buoy"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.131667,
+          29.836667
+        ]
+      },
+      "properties": {
+        "FID": 9,
+        "Id": 0,
+        "area": "wx",
+        "type": "浮标-H1",
+        "equiptype": "buoy"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.50189244216289,
+          29.641866518342631
+        ]
+      },
+      "properties": {
+        "FID": 14,
+        "Id": 0,
+        "area": "wx",
+        "type": "浮标-205",
+        "equiptype": "buoy"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.98668894682763,
+          29.887426894144316
+        ]
+      },
+      "properties": {
+        "FID": 16,
+        "Id": 0,
+        "area": "wx",
+        "type": "浮标-207",
+        "equiptype": "buoy"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 22,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.14267510462638,
+          29.99664415431192
+        ]
+      },
+      "properties": {
+        "FID": 22,
+        "Id": 0,
+        "area": "wx",
+        "type": "浮标-213",
+        "equiptype": "buoy"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 28,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.74551155045349,
+          28.665573667650452
+        ]
+      },
+      "properties": {
+        "FID": 28,
+        "Id": 0,
+        "area": "wx",
+        "type": "浮标-304",
+        "equiptype": "buoy"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 32,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.94027043378068,
+          29.164070748371905
+        ]
+      },
+      "properties": {
+        "FID": 32,
+        "Id": 0,
+        "area": "wx",
+        "type": "浮标-308",
+        "equiptype": "buoy"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 35,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.60714589296444,
+          29.358710658648825
+        ]
+      },
+      "properties": {
+        "FID": 35,
+        "Id": 0,
+        "area": "wx",
+        "type": "浮标-311",
+        "equiptype": "buoy"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 40,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.77658727892144,
+          28.872413326841983
+        ]
+      },
+      "properties": {
+        "FID": 40,
+        "Id": 0,
+        "area": "A3",
+        "type": "平湖",
+        "equiptype": "platform"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 41,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.80323724218681,
+          28.96354668336528
+        ]
+      },
+      "properties": {
+        "FID": 41,
+        "Id": 0,
+        "area": "A3",
+        "type": "八角亭",
+        "equiptype": "platform"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 42,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.1782402967056,
+          29.392087610515322
+        ]
+      },
+      "properties": {
+        "FID": 42,
+        "Id": 0,
+        "area": "A3",
+        "type": "孔雀台B平台",
+        "equiptype": "platform"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 43,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.09067613169104,
+          29.473941069115885
+        ]
+      },
+      "properties": {
+        "FID": 43,
+        "Id": 0,
+        "area": "A3",
+        "type": "孔雀台A平台",
+        "equiptype": "platform"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 47,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.95165966049989,
+          29.83787962995763
+        ]
+      },
+      "properties": {
+        "FID": 47,
+        "Id": 0,
+        "area": "A4",
+        "type": "观测塔",
+        "equiptype": "tower"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 48,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.26275042467034,
+          30.315729875193767
+        ]
+      },
+      "properties": {
+        "FID": 48,
+        "Id": 0,
+        "area": " ",
+        "type": "A1",
+        "equiptype": "marker"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 49,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.90234954303753,
+          29.756080646622593
+        ]
+      },
+      "properties": {
+        "FID": 49,
+        "Id": 0,
+        "area": " ",
+        "type": "A2",
+        "equiptype": "marker"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 50,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.71148681640625,
+          29.025146484375
+        ]
+      },
+      "properties": {
+        "FID": 50,
+        "Id": 0,
+        "area": " ",
+        "type": "A3",
+        "equiptype": "marker"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 51,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.99639892578125,
+          29.72186279296875
+        ]
+      },
+      "properties": {
+        "FID": 51,
+        "Id": 0,
+        "area": " ",
+        "type": "A4",
+        "equiptype": "marker"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 52,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.27874755859375,
+          30.04351806640625
+        ]
+      },
+      "properties": {
+        "FID": 52,
+        "Id": 0,
+        "area": " ",
+        "type": "A5",
+        "equiptype": "marker"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 53,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.87695233487477,
+          30.873475534960448
+        ]
+      },
+      "properties": {
+        "FID": 53,
+        "Id": 0,
+        "area": " ",
+        "type": "A0",
+        "equiptype": "marker"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 58,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.71904888595527,
+          31.022123179203067
+        ]
+      },
+      "properties": {
+        "FID": 58,
+        "Id": 0,
+        "area": "jz",
+        "type": "信号塔",
+        "equiptype": "xht"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 60,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.595,
+          30.599
+        ]
+      },
+      "properties": {
+        "FID": 60,
+        "Id": 0,
+        "area": "A0",
+        "type": "卫星",
+        "equiptype": "wx"
+      }
+    }
+  ]
+}
