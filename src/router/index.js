@@ -284,6 +284,24 @@ export const constantRoutes = [
         name: 'CaseOne',
         component: () => import('@/views/cesium/CaseOne/CaseOne'),
         meta: { title: '综合案例一', icon: 'tree' }
+      },
+      {
+        path: 'table22',
+        name: 'geologicalUnderGround',
+        component: () => import('@/views/cesium/geologicalUnderGround'),
+        meta: { title: '地质数据地下模式', icon: 'tree' }
+      },
+      {
+        path: 'table23',
+        name: 'UnderGroundModel',
+        component: () => import('@/views/cesium/UnderGroundModel'),
+        meta: { title: '地下模型', icon: 'tree' }
+      },
+      {
+        path: 'table24',
+        name: 'CaseTwo',
+        component: () => import('@/views/cesium/CaseTwo/CaseTwo'),
+        meta: { title: '案例二：地质层-流场展示', icon: 'tree' }
       }
     ]
   },

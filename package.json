@@ -20,6 +20,7 @@
     "axios": "0.18.1",
     "cesium": "1.71.0",
     "core-js": "3.6.5",
+    "d3-delaunay": "^6.0.4",
     "dat.gui": "^0.7.9",
     "element-ui": "2.13.2",
     "gasp": "^0.0.2",
