@@ -97,12 +97,15 @@ export default {
         duration: 3 // 动画持续时间
       })
       // this.rotate() // 初始调用旋转方法（可选）
-      this.loadGeoJsonData('/json/T8_Trans.geojson', 500000) // 渲染面
-      this.loadGeoJsonData('/json/T9_Trans.geojson', 600000) // 渲染面
-      this.loadGeoJsonData('/json/T10_Trans.geojson', 700000) // 渲染面
-      this.loadGeoJsonData('/json/T13_Trans.geojson', 800000) // 渲染面
+      // this.loadGeoJsonData('/json/T8_Trans.geojson', 500000) // 渲染面
+      // this.loadGeoJsonData('/json/T9_Trans.geojson', 600000) // 渲染面
+      // this.loadGeoJsonData('/json/T10_Trans.geojson', 700000) // 渲染面
+      // this.loadGeoJsonData('/json/T13_Trans.geojson', 800000) // 渲染面
       //原始点
-      // this.addGeological()
+      this.addGeological('/json/T8_Trans.geojson')
+      this.addGeological('/json/T9_Trans.geojson')
+      this.addGeological('/json/T10_Trans.geojson')
+      this.addGeological('/json/T13_Trans.geojson')
       //插值点
       // this.addGeologicalInter()
       // this.reset()
@@ -449,15 +452,33 @@ export default {
 
       const primitive = new Cesium.Primitive({
         geometryInstances: new Cesium.GeometryInstance({
-          geometry: geometry
+          geometry: geometry,
+          id: 'surfaceEntity' // 设置唯一标识符
         }),
         appearance: appearance,
         asynchronous: false
       })
 
       this.viewer.scene.primitives.add(primitive)
-    },
 
+      // 添加点击事件监听器
+      // 添加点击事件监听器
+      const handler = new Cesium.ScreenSpaceEventHandler(this.viewer.scene.canvas);
+      handler.setInputAction(movement => {
+        const pickedObject = this.viewer.scene.pick(movement.position);
+        console.log('Picked object:', pickedObject); // 输出 pickedObject 以调试
+        if (Cesium.defined(pickedObject) && pickedObject.primitive === primitive) {
+          // 当点击了面时，显示简介信息
+          this.showInfo();
+        }
+      }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+    },
+    showInfo() {
+      // 显示简介信息的逻辑，例如在控制台输出或者在 UI 上显示
+      alert('Surface clicked!')
+      // 你可以将信息显示在 HTML 元素中，例如一个侧边栏
+      // document.getElementById('infoPanel').innerHTML = 'This is the surface information.';
+    },
     getColorFromHeight(height, minHeight, maxHeight) {
       const ratio = (height - minHeight) / (maxHeight - minHeight)
       // 反向设置颜色，高度越高颜色越红
@@ -606,9 +627,9 @@ export default {
     },
 
     // 加载数据点
-    addGeological() {
+    addGeological(url) {
 
-      const geoJsonUrl = '/json/T8_Trans.geojson'
+      const geoJsonUrl = url
       fetch(geoJsonUrl)
         .then(response => response.json())
         .then(data => {

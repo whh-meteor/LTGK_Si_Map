@@ -162,7 +162,12 @@ export const constantRoutes = [
         name: 'DifferenceMore',
         component: () => import('@/views/maptalks/Differencemore'),
         meta: { title: '多个矢量图形变化检测', icon: 'table' }
-      }
+      },{
+        path: 'table14',
+        name: 'mask',
+        component: () => import('@/views/maptalks/mask'),
+        meta: { title: 'Mask', icon: 'table' }
+      }, 
 
     ]
   },
@@ -302,6 +307,12 @@ export const constantRoutes = [
         name: 'CaseTwo',
         component: () => import('@/views/cesium/CaseTwo/CaseTwo'),
         meta: { title: '案例二：地质层-流场展示', icon: 'tree' }
+      },
+      {
+        path: 'table25',
+        name: 'pointsCloud',
+        component: () => import('@/views/cesium/pointsCloud'),
+        meta: { title: '模拟点云效果', icon: 'tree' }
       }
     ]
   },
