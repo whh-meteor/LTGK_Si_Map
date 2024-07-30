@@ -125,11 +125,11 @@ export default {
       //地球透明 海水部分
       this.useTranslucencyMask();
       //添加部分海洋流场
-      // this.addFlow();
+      this.addFlow();
       //添加船运动与路线，围墙
-      // this.drawWall();
-      // this.initShipData();
-      // this.showPath();
+      this.drawWall();
+      this.initShipData();
+      this.showPath();
     },
 
     // 路线部分
