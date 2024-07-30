@@ -167,6 +167,11 @@ export const constantRoutes = [
         name: 'mask',
         component: () => import('@/views/maptalks/mask'),
         meta: { title: 'Mask', icon: 'table' }
+      }, {
+        path: 'table15',
+        name: 'Style',
+        component: () => import('@/views/maptalks/Style'),
+        meta: { title: '样式配置', icon: 'table' }
       }, 
 
     ]

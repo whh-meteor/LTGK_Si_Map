@@ -89,11 +89,15 @@ export default {
         }, {
           item: '下载Geojson数据',
           click: function () { that.handleDownload() }
+        }, {
+          item: '图形样式编辑',
+          click: function () { that.EditGeojson() }
         }
         ]
       })
         .addTo(window.map)
     },
+    EditGeojson(){},
     // 加载基础数据T1
     AddT1Json() {
       this.coordinates = this.json1.features.map(feature => feature.geometry.coordinates)
