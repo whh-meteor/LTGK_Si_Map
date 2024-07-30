@@ -31,11 +31,14 @@ export default {
 
     this.scene = this.viewer.scene;
     this.globe = this.scene.globe;
-
+    // 添加瓦片坐标信息,显示当前瓦片的层级、行列号
+    this.viewer.imageryLayers.addImageryProvider(
+      new Cesium.TileCoordinatesImageryProvider()
+    );
     // 禁用碰撞检测
     this.scene.screenSpaceCameraController.enableCollisionDetection = false;
     //地形线框模式
-    this.viewer.scene.globe._surface._tileProvider._debug.wireframe = true;
+    // this.viewer.scene.globe._surface._tileProvider._debug.wireframe = true;
     // 设置地球透明度衰减参数
     this.globe.translucency.frontFaceAlphaByDistance = new Cesium.NearFarScalar(
       400.0,
