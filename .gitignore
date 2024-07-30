@@ -6,9 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 tests/**/coverage/
-.glb
-.mp4
-.gltf
+# .glb
+# .mp4
+# .gltf
 # Editor directories and files
 .idea
 .vscode
