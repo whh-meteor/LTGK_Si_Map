@@ -13,6 +13,7 @@ export default {
       viewer: null,
       scene: null,
       globe: null,
+      MAX_SHORT: 32767,
     };
   },
   // 组件挂载后执行
@@ -51,7 +52,7 @@ export default {
       destination: Cesium.Cartesian3.fromDegrees(117.096, 36.206), // 相机飞行目标位置
       complete: () => {},
     });
-    alert("export");
+
     this.Load();
   },
 
@@ -72,7 +73,7 @@ export default {
         tilesToProcess.push(tile);
         if (tile instanceof Cesium.Cesium3DTileset) return;
       });
-      const MAX_SHORT = 32767;
+      this.MAX_SHORT = 32767;
       var terrainProvider = viewer.terrainProvider;
 
       // 创建一个Request对象，这通常是可选的
@@ -93,39 +94,36 @@ export default {
       ];
       const level = 12; // 定义级别
 
-      console.log("ready?");
-      console.log(terrainProvider.readyPromise);
       // 使用requestMultipleTiles请求多个瓦片
+      var that = this;
       terrainProvider.readyPromise.then(() => {
-        console.log(terrainProvider.readyPromise);
-        console.log("ready!");
-        this.requestMultipleTiles(tileCoords, level, terrainProvider).then(
-          (allTileData) => {
-            console.log("所有瓦片的处理结果:", allTileData);
+        alert("ready");
+        that
+          .requestMultipleTiles(tileCoords, level, terrainProvider)
+          .then((allTileData) => {
+            alert("ready2");
+            // 处理所有瓦片的数据
+            let processedData = allTileData.map((tileData, index) =>
+              that.processTileData(tileData, tileCoords[index], level)
+            );
+            console.log("所有瓦片的处理结果:", processedData);
 
             // 创建 .obj 文件内容
-            let objContent = this.createObjFileContent(allTileData);
+            let objContent = this.createObjFileContent(processedData);
 
             // 触发下载
-            this.download("terrain.obj", objContent);
-          }
-        );
+            that.download("terrain.obj", objContent);
+          })
+          .catch((error) => {
+            console.error("Error in requestMultipleTiles:", error);
+          });
       });
     },
     // 定义请求单个瓦片数据的函数
     requestTileData(x, y, level, terrainProvider) {
-      return terrainProvider
-        .requestTileGeometry(x, y, level)
-        .then((terrainData) => {
-          console.log(
-            "Terrain tile data for tile " + x + ", " + y + ":",
-            terrainData
-          );
-          return terrainData; // 返回地形数据
-        })
-        .catch((error) => {
-          console.error("获取地形数据失败", error);
-        });
+      return new Promise((resolve, reject) => {
+        resolve(terrainProvider.requestTileGeometry(x, y, level));
+      });
     },
 
     // 定义请求多个瓦片数据的函数
@@ -133,14 +131,20 @@ export default {
       let promises = [];
 
       for (let tileCoord of tileCoords) {
+        // alert("准备请求瓦片数据: " + JSON.stringify(tileCoord));
+        // let promise =
         let promise = this.requestTileData(
           tileCoord.x,
           tileCoord.y,
           level,
           terrainProvider
         );
+        // debugger;
+        // alert("Promise 对象: " + promise);
         promises.push(promise);
       }
+
+      console.log("Promises array:", promises);
 
       return Promise.all(promises);
     },
@@ -151,6 +155,7 @@ export default {
         tileCoord.y,
         level
       );
+      var MAX_SHORT = this.MAX_SHORT;
       const minimumHeight = terrainData._minimumHeight;
       const maximumHeight = terrainData._maximumHeight;
 
@@ -247,7 +252,7 @@ export default {
         var longitude3 = Cesium.Math.toDegrees(cartographicPoint3.longitude);
         var latitude3 = Cesium.Math.toDegrees(cartographicPoint3.latitude);
         var height3 = vertices[faces[i][2]][2];
-        viewer.entities.add({
+        this.viewer.entities.add({
           name: "三角面",
           polygon: {
             hierarchy: Cesium.Cartesian3.fromDegreesArrayHeights([
@@ -270,7 +275,7 @@ export default {
           },
         });
       }
-      this.viewer.zoomTo(viewer.entities);
+      this.viewer.zoomTo(this.viewer.entities);
 
       return { vertices, faces };
     },
@@ -301,6 +306,7 @@ export default {
       return objContent;
     },
     download(filename, text) {
+      alert(filename);
       var element = document.createElement("a");
       element.setAttribute(
         "href",
