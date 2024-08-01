@@ -9,6 +9,7 @@ import "maptalks/dist/maptalks.css"; // 导入 maptalks 的 CSS 样式
 import * as turf from "@turf/turf";
 import bohaiJson from "/public/json/baohai_Polygon.json";
 import meshJson from "/public/json/mesh.json";
+import anxianJson from "/public/json/Xyz2Json_84.json";
 
 export default {
   name: "MapComponent", // 组件的名称
@@ -103,6 +104,7 @@ export default {
                     lineDasharray: null, //dasharray, e.g. [10, 5, 5]
                     "lineOpacity ": 1,
                   });
+
                   break;
                 case "LineString":
                   g.updateSymbol({
@@ -115,8 +117,12 @@ export default {
                   });
                   break;
                 case "Point":
+                  console.log(g._coordinates);
                   g.updateSymbol({
                     markerFill: "#f00",
+                    markerFile: "/img/捕捉折点.png", // 标记图像文件路径
+                    markerWidth: 24, // 标记宽度
+                    markerHeight: 24, // 标记高度
                   });
                   break;
 
@@ -148,6 +154,12 @@ export default {
             },
           },
           {
+            item: "岸线",
+            click: function () {
+              self.loadAnXian();
+            },
+          },
+          {
             item: "三角网", // 清除矢量图层的按钮
             click: function () {
               self.addTrian();
@@ -168,7 +180,7 @@ export default {
             ],
           },
           {
-            item: "岸线", // 清除矢量图层的按钮
+            item: "岸线范围", // 清除矢量图层的按钮
             click: function () {
               self.coastLine();
             },
@@ -334,6 +346,41 @@ export default {
         points.features[i].properties.z = ~~(Math.random() * 9);
       }
       var tin = turf.tin(points, "z");
+    },
+    loadAnXian() {
+      anxianJson.features.forEach((element) => {
+        maptalks.GeoJSON.toGeometry(element)
+          .addTo(this.map.getLayer("vector"))
+          .setSymbol({
+            markerFile: "/img/Z折点(悬停).png",
+            markerWidth: 10,
+            markerHeight: 10,
+          });
+      });
+
+      var coordinates = [];
+      anxianJson.features.forEach((element) => {
+        coordinates.push(element.geometry.coordinates);
+      });
+      var linestring1 = turf.lineString(coordinates, { name: "line 1" });
+
+      maptalks.GeoJSON.toGeometry(linestring1)
+        .addTo(this.map.getLayer("vector"))
+        .setSymbol({
+          lineColor: "#1bbc9b", // 线的颜色
+          lineWidth: 3, // 线的宽度
+          lineDasharray: [10, 10], // 虚线样式
+          // markerFile: "/img/Z折点(悬停).png", // 标记图像文件路径
+          // markerPlacement: "vertex", // 标记放置位置，顶点
+          markerVerticalAlignment: "middle", // 标记垂直对齐方式
+          markerWidth: 16, // 标记宽度
+          markerHeight: 16, // 标记高度
+        });
+
+      var start = turf.point([121.64073575625395, 37.754175814015746]);
+      var stop = turf.point([123.79057108474568, 37.71827432244768]);
+      var sliced = turf.lineSlice(start, stop, linestring1);
+      maptalks.GeoJSON.toGeometry(sliced).addTo(this.map.getLayer("vector"));
     },
   },
 };

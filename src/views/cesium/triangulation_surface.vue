@@ -39,7 +39,7 @@ export default {
     // 禁用碰撞检测
     this.scene.screenSpaceCameraController.enableCollisionDetection = false;
     //地形线框模式
-    // this.viewer.scene.globe._surface._tileProvider._debug.wireframe = true;
+    this.viewer.scene.globe._surface._tileProvider._debug.wireframe = true;
     // 设置地球透明度衰减参数
     this.globe.translucency.frontFaceAlphaByDistance = new Cesium.NearFarScalar(
       400.0,
