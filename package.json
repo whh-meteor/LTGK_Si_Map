@@ -22,6 +22,7 @@
     "core-js": "3.6.5",
     "d3-delaunay": "^6.0.4",
     "dat.gui": "^0.7.9",
+    "delaunator": "^5.0.1",
     "element-ui": "2.13.2",
     "gasp": "^0.0.2",
     "gsap": "^3.12.5",

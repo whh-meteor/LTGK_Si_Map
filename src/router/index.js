@@ -325,6 +325,12 @@ export const constantRoutes = [
         meta: { title: "案例二：地质层-流场展示", icon: "tree" },
       },
       {
+        path: "table24-2",
+        name: "CaseTwo-2",
+        component: () => import("@/views/cesium/CaseTwo/CaseTwoTrain"),
+        meta: { title: "地质层-三角网", icon: "tree" },
+      },
+      {
         path: "table25",
         name: "pointsCloud",
         component: () => import("@/views/cesium/pointsCloud"),

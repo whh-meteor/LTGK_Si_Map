@@ -97,11 +97,9 @@ export default {
       // 使用requestMultipleTiles请求多个瓦片
       var that = this;
       terrainProvider.readyPromise.then(() => {
-        alert("ready");
         that
           .requestMultipleTiles(tileCoords, level, terrainProvider)
           .then((allTileData) => {
-            alert("ready2");
             // 处理所有瓦片的数据
             let processedData = allTileData.map((tileData, index) =>
               that.processTileData(tileData, tileCoords[index], level)
@@ -150,6 +148,8 @@ export default {
     },
     //处理每个瓦片的地形数据，计算出顶点和面。
     processTileData(terrainData, tileCoord, level) {
+      console.log("地形数据--：");
+      console.log(terrainData);
       const rect = new Cesium.GeographicTilingScheme().tileXYToRectangle(
         tileCoord.x,
         tileCoord.y,
@@ -244,7 +244,7 @@ export default {
         // 获取经度、纬度（以度为单位），以及高度
         var longitude1 = Cesium.Math.toDegrees(cartographicPoint1.longitude);
         var latitude1 = Cesium.Math.toDegrees(cartographicPoint1.latitude);
-        console.log(cartographicPoint1.latitude);
+        // console.log(cartographicPoint1.latitude);
         var height1 = vertices[faces[i][0]][2];
         var longitude2 = Cesium.Math.toDegrees(cartographicPoint2.longitude);
         var latitude2 = Cesium.Math.toDegrees(cartographicPoint2.latitude);
@@ -306,7 +306,6 @@ export default {
       return objContent;
     },
     download(filename, text) {
-      alert(filename);
       var element = document.createElement("a");
       element.setAttribute(
         "href",
