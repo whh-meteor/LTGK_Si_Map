@@ -152,12 +152,14 @@ export default {
         resultPoints[2].lng,
         resultPoints[0].lat
       );
-      console.log("区域范围");
+      console.log("1-区域范围");
       console.log(rectangle);
       // 2. 在这个矩形区域内生成点集
-      var width = 100; // 横向点数
-      var height = 100; // 纵向点数
+      var width = 20; // 横向点数
+      var height = 20; // 纵向点数
       var terrainProvider = this.viewer.terrainProvider;
+      console.log("2- terrainProvider地形");
+      console.log(terrainProvider);
       var positions = [];
       for (var y = 0; y < height; y++) {
         for (var x = 0; x < width; x++) {
@@ -174,6 +176,8 @@ export default {
           positions.push(Cesium.Cartographic.fromRadians(longitude, latitude));
         }
       }
+      console.log("3- positions");
+      console.log(positions);
       this.giveHeight(terrainProvider, positions);
     },
     giveHeight(terrainProvider, positions) {
@@ -182,6 +186,7 @@ export default {
       Cesium.sampleTerrainMostDetailed(terrainProvider, positions).then(
         function (samples) {
           var points = samples.map(function (sample) {
+            // Geojson 的Points
             return turf.point(
               [
                 Cesium.Math.toDegrees(sample.longitude),
@@ -191,13 +196,15 @@ export default {
               { z: sample.height }
             ); // 将高度值保存到名为 'z' 的属性中);
           });
+          console.log("4- points");
+          console.log(points);
           // 创建一个FeatureCollection
           var featureCollection = turf.featureCollection(points);
           var tin = turf.tin(featureCollection, "z");
           var geometryInstances = []; // 用于存放所有的三角形GeometryInstance
           var instances = [];
 
-          // 遍历每个TIN三角形
+          // 遍历每个TIN三角形!!!!
           tin.features.forEach(function (feature, i) {
             var coordinates = feature.geometry.coordinates[0];
 
@@ -383,7 +390,8 @@ export default {
      * @param {*} point2
      * @param {*} point3
      * @returns
-     */ calculateSlopeAndAspect(point1, point2, point3) {
+     */
+    calculateSlopeAndAspect(point1, point2, point3) {
       // 计算两个向量，它们位于三角形的两边
       var v1 = Cesium.Cartesian3.subtract(
         point1,

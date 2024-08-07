@@ -125,11 +125,11 @@ export default {
       //地球透明 海水部分
       this.useTranslucencyMask();
       //添加部分海洋流场
-      this.addFlow();
+      // this.addFlow();
       //添加船运动与路线，围墙
-      this.drawWall();
-      this.initShipData();
-      this.showPath();
+      // this.drawWall();
+      // this.initShipData();
+      // this.showPath();
     },
 
     // 路线部分
@@ -542,14 +542,14 @@ export default {
     },
     getColorFromHeight(height, minHeight, maxHeight) {
       const ratio = (height - minHeight) / (maxHeight - minHeight);
-      // 反向设置颜色，高度越高颜色越红
-      // return Cesium.Color.fromHsl(0.6 * (1 - ratio), 1.0, 0.5, 1.0).toBytes();
+      //反向设置颜色，高度越高颜色越红
+      return Cesium.Color.fromHsl(0.6 * (1 - ratio), 1.0, 0.5, 1.0).toBytes();
       // // 设定绿色渐变的色调范围，从纯绿色(0.25)到接近黄色的绿色(0.4)
 
-      const hue = 0.2 + 0.1 * ratio;
-      // 亮度从0.1到0.3之间变化，使得高处颜色更加深
-      const lightness = 0.3 - 0.2 * ratio;
-      return Cesium.Color.fromHsl(hue, 1.0, lightness, 1.0).toBytes();
+      // const hue = 0.2 + 0.1 * ratio;
+      // // 亮度从0.1到0.3之间变化，使得高处颜色更加深
+      // const lightness = 0.3 - 0.2 * ratio;
+      // return Cesium.Color.fromHsl(hue, 1.0, lightness, 1.0).toBytes();
     },
 
     generateInterpolatedPoints(points) {
