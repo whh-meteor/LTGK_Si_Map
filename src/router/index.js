@@ -354,6 +354,12 @@ export const constantRoutes = [
         component: () => import("@/views/cesium/DrawEntity"),
         meta: { title: "实体绘制与编辑", icon: "tree" },
       },
+      {
+        path: "table29",
+        name: "Windy",
+        component: () => import("@/views/cesium/Windy"),
+        meta: { title: "流场-风", icon: "tree" },
+      },
     ],
   },
   {
