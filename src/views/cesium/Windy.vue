@@ -228,6 +228,7 @@ export default {
         frameRate: 10,
         color: "#ffffff",
         lineWidth: 1,
+        initExtent: [110, 120, 30, 36],
       };
 
       // 调整风场Canvas的大小

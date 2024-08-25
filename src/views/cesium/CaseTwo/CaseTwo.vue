@@ -105,12 +105,12 @@ export default {
         duration: 3, // 动画持续时间
       });
       // this.rotate() // 初始调用旋转方法（可选）
-      this.loadGeoJsonData("/json/fault_1.geojson", 50000); //断层
-      this.loadGeoJsonData("/json/fault_3.geojson", 50000); // 断层
-      this.loadGeoJsonData("/json/T8_Trans.geojson", 500000); // 渲染面
-      this.loadGeoJsonData("/json/T9_Trans.geojson", 600000); // 渲染面
-      this.loadGeoJsonData("/json/T10_Trans.geojson", 700000); // 渲染面
-      this.loadGeoJsonData("/json/T13_Trans.geojson", 800000); // 渲染面
+      // this.loadGeoJsonData("/json/fault_1.geojson", 50000); //断层
+      // this.loadGeoJsonData("/json/fault_3.geojson", 50000); // 断层
+      // this.loadGeoJsonData("/json/T8_Trans.geojson", 500000); // 渲染面
+      // this.loadGeoJsonData("/json/T9_Trans.geojson", 600000); // 渲染面
+      // this.loadGeoJsonData("/json/T10_Trans.geojson", 700000); // 渲染面
+      // this.loadGeoJsonData("/json/T13_Trans.geojson", 800000); // 渲染面
       //原始点
 
       // this.addGeological("/json/t8_grid.geojson"); // 60万地层加密
@@ -125,7 +125,7 @@ export default {
       //地球透明 海水部分
       this.useTranslucencyMask();
       //添加部分海洋流场
-      // this.addFlow();
+      this.addFlow();
       //添加船运动与路线，围墙
       // this.drawWall();
       // this.initShipData();

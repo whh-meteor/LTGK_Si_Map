@@ -251,12 +251,25 @@ export default {
       const instances = geometries.map((geometry, index) => {
         return new Cesium.GeometryInstance({
           geometry: geometry,
+          id: "Abc",
           attributes: {
             color: colors[index],
           },
         });
       });
-
+      console.log("内层");
+      console.log(instances);
+      var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+      //设置单击事件的处理句柄
+      handler.setInputAction(function (movement) {
+        var pick = viewer.scene.pick(movement.position);
+        console.log("pick");
+        console.log(pick);
+        console.log(pick.id);
+        if (Cesium.defined(pick) && pick.id) {
+          console.log("pick.id=" + pick.id);
+        }
+      }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
       viewer.scene.primitives.add(
         new Cesium.Primitive({
           geometryInstances: instances,

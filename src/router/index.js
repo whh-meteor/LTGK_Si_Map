@@ -360,6 +360,12 @@ export const constantRoutes = [
         component: () => import("@/views/cesium/Windy"),
         meta: { title: "流场-风", icon: "tree" },
       },
+      {
+        path: "table30",
+        name: "Windy",
+        component: () => import("@/views/cesium/Windy2"),
+        meta: { title: "流场-风2", icon: "tree" },
+      },
     ],
   },
   {

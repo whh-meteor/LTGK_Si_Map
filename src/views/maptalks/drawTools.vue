@@ -8,7 +8,7 @@ import * as maptalks from "maptalks"; // 导入 maptalks 库
 import "maptalks/dist/maptalks.css"; // 导入 maptalks 的 CSS 样式
 import * as turf from "@turf/turf";
 import bohaiJson from "/public/json/baohai_Polygon.json";
-import meshJson from "/public/json/mesh.json";
+import meshJson from "/public/json/mesh_cs.json";
 import anxianJson from "/public/json/Xyz2Json_84.json";
 
 export default {
