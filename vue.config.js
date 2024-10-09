@@ -32,7 +32,7 @@ module.exports = {
    */
   publicPath: "/",
   outputDir: "docs",
-  assetsDir: "static",
+  assetsDir: "LTGK_Si_Map/static",
   lintOnSave: process.env.NODE_ENV === "development",
   productionSourceMap: false,
   devServer: {
