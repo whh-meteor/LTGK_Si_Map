@@ -94,9 +94,9 @@ export default {
         },
       });
       // this.rotate() // 初始调用旋转方法（可选）
-      // this.loadGeoJsonData('/json/T8_Trans.geojson', 500000) // 渲染面
-      // this.loadGeoJsonData('/json/T9_Trans.geojson', 600000) // 渲染面
-      // this.loadGeoJsonData('/json/T10_Trans.geojson', 700000) // 渲染面
+      this.loadGeoJsonData("/json/T8_Trans.geojson", 500000); // 渲染面
+      this.loadGeoJsonData("/json/T9_Trans.geojson", 600000); // 渲染面
+      this.loadGeoJsonData("/json/T10_Trans.geojson", 700000); // 渲染面
       this.loadGeoJsonData("/json/T13_Trans.geojson", 800000); // 渲染面
       // this.addGeological()
       // this.reset()

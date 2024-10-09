@@ -182,6 +182,12 @@ export const constantRoutes = [
         component: () => import("@/views/maptalks/Style"),
         meta: { title: "样式配置", icon: "table" },
       },
+      {
+        path: "table16",
+        name: "Style",
+        component: () => import("@/views/maptalks/windLayer"),
+        meta: { title: "风", icon: "table" },
+      },
     ],
   },
   {
