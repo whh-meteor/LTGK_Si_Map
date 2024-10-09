@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import CanvasWindyApi from "cesium-windy-canvas"; // 导入风场效果API
-import CesiumWindyData from "./windy/cesiumwindy.data.js"; // 导入风场数据
+// import CanvasWindyApi from "cesium-windy-canvas"; // 导入风场效果API
+// import CesiumWindyData from "./windy/cesiumwindy.data.js"; // 导入风场数据
 
 export default {
   name: "Windy",
@@ -126,124 +126,124 @@ export default {
       }
     },
     // 初始化Cesium Viewer和风场效果
-    init() {
-      // 创建Cesium Viewer实例
-      this.viewer = new Cesium.Viewer("map", {
-        animation: false,
-        homeButton: true,
-        geocoder: true,
-        baseLayerPicker: true,
-        timeline: true,
-        fullscreenButton: true,
-        scene3DOnly: false,
-        infoBox: true,
-        sceneModePicker: true,
-        navigationInstructionsInitiallyVisible: true,
-        navigationHelpButton: true,
-        selectionIndicator: true,
-        // 使用天地图作为图层
-        imageryProvider: new Cesium.WebMapTileServiceImageryProvider({
-          url: "http://t0.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=19b72f6cde5c8b49cf21ea2bb4c5b21e",
-          layer: "tdtBasicLayer",
-          style: "default",
-          format: "image/jpeg",
-          tileMatrixSetID: "GoogleMapsCompatible",
-          show: false,
-          mininumLevel: 0,
-          maximumLevel: 16,
-        }),
-      });
+    // init() {
+    //   // 创建Cesium Viewer实例
+    //   this.viewer = new Cesium.Viewer("map", {
+    //     animation: false,
+    //     homeButton: true,
+    //     geocoder: true,
+    //     baseLayerPicker: true,
+    //     timeline: true,
+    //     fullscreenButton: true,
+    //     scene3DOnly: false,
+    //     infoBox: true,
+    //     sceneModePicker: true,
+    //     navigationInstructionsInitiallyVisible: true,
+    //     navigationHelpButton: true,
+    //     selectionIndicator: true,
+    //     // 使用天地图作为图层
+    //     imageryProvider: new Cesium.WebMapTileServiceImageryProvider({
+    //       url: "http://t0.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=19b72f6cde5c8b49cf21ea2bb4c5b21e",
+    //       layer: "tdtBasicLayer",
+    //       style: "default",
+    //       format: "image/jpeg",
+    //       tileMatrixSetID: "GoogleMapsCompatible",
+    //       show: false,
+    //       mininumLevel: 0,
+    //       maximumLevel: 16,
+    //     }),
+    //   });
 
-      // 隐藏Cesium的版权信息
-      this.viewer.cesiumWidget.creditContainer.style.display = "none";
+    //   // 隐藏Cesium的版权信息
+    //   this.viewer.cesiumWidget.creditContainer.style.display = "none";
 
-      // 创建事件处理器实例
-      this.handler = new Cesium.ScreenSpaceEventHandler(
-        this.viewer.scene.canvas
-      );
+    //   // 创建事件处理器实例
+    //   this.handler = new Cesium.ScreenSpaceEventHandler(
+    //     this.viewer.scene.canvas
+    //   );
 
-      // 监听鼠标滚轮事件，重新生成风场
-      this.handler.setInputAction(() => {
-        clearTimeout(this.refreshTimer);
-        this.hideWindy();
-        setTimeout(() => {
-          this.windy.extent = this.globalExtent;
-          this.windy.redraw();
-          this.showWindy();
-        }, 200);
-      }, Cesium.ScreenSpaceEventType.WHEEL);
+    //   // 监听鼠标滚轮事件，重新生成风场
+    //   this.handler.setInputAction(() => {
+    //     clearTimeout(this.refreshTimer);
+    //     this.hideWindy();
+    //     setTimeout(() => {
+    //       this.windy.extent = this.globalExtent;
+    //       this.windy.redraw();
+    //       this.showWindy();
+    //     }, 200);
+    //   }, Cesium.ScreenSpaceEventType.WHEEL);
 
-      // 监听鼠标左键按下事件
-      this.handler.setInputAction(() => {
-        this.mouseDown = true;
-      }, Cesium.ScreenSpaceEventType.LEFT_DOWN);
+    //   // 监听鼠标左键按下事件
+    //   this.handler.setInputAction(() => {
+    //     this.mouseDown = true;
+    //   }, Cesium.ScreenSpaceEventType.LEFT_DOWN);
 
-      // 监听鼠标右键按下事件
-      this.handler.setInputAction(() => {
-        this.mouseDown = true;
-      }, Cesium.ScreenSpaceEventType.RIGHT_DOWN);
+    //   // 监听鼠标右键按下事件
+    //   this.handler.setInputAction(() => {
+    //     this.mouseDown = true;
+    //   }, Cesium.ScreenSpaceEventType.RIGHT_DOWN);
 
-      // 监听鼠标移动事件，隐藏风场
-      this.handler.setInputAction(() => {
-        if (this.mouseDown) {
-          this.hideWindy();
-          this.mouseMove = true;
-        }
-      }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
+    //   // 监听鼠标移动事件，隐藏风场
+    //   this.handler.setInputAction(() => {
+    //     if (this.mouseDown) {
+    //       this.hideWindy();
+    //       this.mouseMove = true;
+    //     }
+    //   }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
 
-      // 监听鼠标左键抬起事件，重新生成风场
-      this.handler.setInputAction(() => {
-        if (this.mouseDown && this.mouseMove) {
-          this.windy.extent = this.globalExtent;
-          this.windy.redraw();
-        }
-        this.showWindy();
-        this.mouseDown = false;
-        this.mouseMove = false;
-      }, Cesium.ScreenSpaceEventType.LEFT_UP);
+    //   // 监听鼠标左键抬起事件，重新生成风场
+    //   this.handler.setInputAction(() => {
+    //     if (this.mouseDown && this.mouseMove) {
+    //       this.windy.extent = this.globalExtent;
+    //       this.windy.redraw();
+    //     }
+    //     this.showWindy();
+    //     this.mouseDown = false;
+    //     this.mouseMove = false;
+    //   }, Cesium.ScreenSpaceEventType.LEFT_UP);
 
-      // 监听鼠标右键抬起事件，重新生成风场
-      this.handler.setInputAction(() => {
-        if (this.mouseDown && this.mouseMove) {
-          this.windy.extent = this.globalExtent;
-          this.windy.redraw();
-        }
-        this.showWindy();
-        this.mouseDown = false;
-        this.mouseMove = false;
-      }, Cesium.ScreenSpaceEventType.RIGHT_UP);
+    //   // 监听鼠标右键抬起事件，重新生成风场
+    //   this.handler.setInputAction(() => {
+    //     if (this.mouseDown && this.mouseMove) {
+    //       this.windy.extent = this.globalExtent;
+    //       this.windy.redraw();
+    //     }
+    //     this.showWindy();
+    //     this.mouseDown = false;
+    //     this.mouseMove = false;
+    //   }, Cesium.ScreenSpaceEventType.RIGHT_UP);
 
-      // 获取风场的Canvas对象
-      this.windycanvas = document.getElementById("windycanvas");
+    //   // 获取风场的Canvas对象
+    //   this.windycanvas = document.getElementById("windycanvas");
 
-      // 初始化风场参数
-      const params = {
-        viewer: this.viewer,
-        canvas: this.windycanvas,
-        canvasWidth: window.innerWidth,
-        canvasHeight: window.innerHeight,
-        speedRate: 2000,
-        particlesNumber: 10000,
-        maxAge: 120,
-        frameRate: 10,
-        color: "#ffffff",
-        lineWidth: 1,
-        initExtent: [110, 120, 30, 36],
-      };
+    //   // 初始化风场参数
+    //   const params = {
+    //     viewer: this.viewer,
+    //     canvas: this.windycanvas,
+    //     canvasWidth: window.innerWidth,
+    //     canvasHeight: window.innerHeight,
+    //     speedRate: 2000,
+    //     particlesNumber: 10000,
+    //     maxAge: 120,
+    //     frameRate: 10,
+    //     color: "#ffffff",
+    //     lineWidth: 1,
+    //     initExtent: [110, 120, 30, 36],
+    //   };
 
-      // 调整风场Canvas的大小
-      this.resizeCanvas();
-      window.onresize = this.resizeCanvas;
+    //   // 调整风场Canvas的大小
+    //   this.resizeCanvas();
+    //   window.onresize = this.resizeCanvas;
 
-      // 创建风场实例
-      this.windy = new CanvasWindyApi.CesiumWindy(CesiumWindyData, params);
+    //   // 创建风场实例
+    //   this.windy = new CanvasWindyApi.CesiumWindy(CesiumWindyData, params);
 
-      // 添加监听器，每次渲染后更新地理范围
-      this.viewer.scene.postRender.addEventListener(() => {
-        this.getCesiumExtent();
-      });
-      console.log(this.viewer);
-    },
+    //   // 添加监听器，每次渲染后更新地理范围
+    //   this.viewer.scene.postRender.addEventListener(() => {
+    //     this.getCesiumExtent();
+    //   });
+    //   console.log(this.viewer);
+    // },
   },
 };
 </script>
@@ -270,6 +270,7 @@ export default {
   top: 0;
   z-index: 10;
   display: block;
-  pointer-events: none; /* 禁止鼠标事件，防止干扰地图交互 */
+  pointer-events: none;
+  /* 禁止鼠标事件，防止干扰地图交互 */
 }
 </style>
