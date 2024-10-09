@@ -30,9 +30,9 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: "/",
+  publicPath: "/LTGK_Si_Map",
   outputDir: "docs",
-  assetsDir: "LTGK_Si_Map/static",
+  assetsDir: "static",
   lintOnSave: process.env.NODE_ENV === "development",
   productionSourceMap: false,
   devServer: {
